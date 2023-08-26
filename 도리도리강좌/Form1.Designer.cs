@@ -30,6 +30,7 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
+            button5 = new Button();
             button6 = new Button();
             button7 = new Button();
             button9 = new Button();
@@ -40,7 +41,6 @@
             button2 = new Button();
             button3 = new Button();
             panel1 = new Panel();
-            button5 = new Button();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
@@ -87,6 +87,16 @@
             tableLayoutPanel2.Size = new Size(937, 75);
             tableLayoutPanel2.TabIndex = 0;
             // 
+            // button5
+            // 
+            button5.Location = new Point(751, 3);
+            button5.Name = "button5";
+            button5.Size = new Size(183, 33);
+            button5.TabIndex = 4;
+            button5.Text = "캡슐화";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
             // button6
             // 
             button6.Location = new Point(3, 42);
@@ -131,10 +141,11 @@
             // 
             button4.Location = new Point(564, 3);
             button4.Name = "button4";
-            button4.Size = new Size(181, 29);
+            button4.Size = new Size(181, 33);
             button4.TabIndex = 3;
-            button4.Text = "button4";
+            button4.Text = "상속 그림그리기";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button8
             // 
@@ -161,7 +172,7 @@
             button2.Name = "button2";
             button2.Size = new Size(181, 33);
             button2.TabIndex = 11;
-            button2.Text = "button2";
+            button2.Text = "Enum";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
@@ -171,8 +182,9 @@
             button3.Name = "button3";
             button3.Size = new Size(181, 33);
             button3.TabIndex = 12;
-            button3.Text = "button3";
+            button3.Text = "배열";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // panel1
             // 
@@ -182,15 +194,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(937, 428);
             panel1.TabIndex = 1;
-            // 
-            // button5
-            // 
-            button5.Location = new Point(751, 3);
-            button5.Name = "button5";
-            button5.Size = new Size(183, 33);
-            button5.TabIndex = 4;
-            button5.Text = "button5";
-            button5.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
