@@ -24,6 +24,8 @@ namespace 도리도리강좌.ucPannel
 
         private void UserControl5_Load(object sender, EventArgs e)
         {
+            Console.WriteLine((int)Enumitem.즉석식품);
+
 
             foreach (Enumitem item in Enum.GetValues(typeof(Enumitem)))
             {
@@ -41,13 +43,32 @@ namespace 도리도리강좌.ucPannel
 
         private void button1_Click(object sender, EventArgs e)
         {
+            try
+            {
+                textBox2.Text = String.Empty;
+                cdata.Stringitem = comboBox1.Text;
+                cdata.IRate = (int)Enum.Parse(typeof(EnumRate), comboBox2.Text);
+                cdata.ICount = (int)numericUpDown1.Value;
 
-            cdata.Stringitem = comboBox1.Text;
-            cdata.IRate = (int)Enum.Parse(typeof(Enumitem), comboBox2.Text);
-            cdata.ICount = (int)numericUpDown1.Value;
+                double dprice = cdata.fitemPirce();
+                listBox1.Items.Add(cdata.fresult(dprice));
 
-            textBox2.Text = cdata.StringErrName;
-            
+
+                cdata.SetTotalprice(dprice);
+
+                textBox1.Text = cdata.GetTotalprice().ToString();
+
+            }
+            catch (Myexception ex)
+            {
+
+                textBox2.Text = ex.Message;
+
+            }
+
+
+
+
 
         }
     }

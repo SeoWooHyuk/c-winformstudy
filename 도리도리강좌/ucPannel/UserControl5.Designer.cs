@@ -39,6 +39,7 @@
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             label4 = new Label();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
@@ -48,13 +49,13 @@
             listBox1.ItemHeight = 20;
             listBox1.Location = new Point(63, 41);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(217, 284);
+            listBox1.Size = new Size(312, 284);
             listBox1.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(324, 49);
+            label1.Location = new Point(408, 46);
             label1.Name = "label1";
             label1.Size = new Size(39, 20);
             label1.TabIndex = 1;
@@ -63,7 +64,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(324, 72);
+            comboBox1.Location = new Point(408, 69);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(151, 28);
             comboBox1.TabIndex = 2;
@@ -71,7 +72,7 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(324, 149);
+            comboBox2.Location = new Point(408, 146);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(151, 28);
             comboBox2.TabIndex = 4;
@@ -79,7 +80,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(324, 126);
+            label2.Location = new Point(408, 123);
             label2.Name = "label2";
             label2.Size = new Size(77, 20);
             label2.TabIndex = 3;
@@ -88,7 +89,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(324, 209);
+            label3.Location = new Point(408, 206);
             label3.Name = "label3";
             label3.Size = new Size(39, 20);
             label3.TabIndex = 5;
@@ -96,14 +97,14 @@
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(325, 232);
+            numericUpDown1.Location = new Point(409, 229);
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(150, 27);
             numericUpDown1.TabIndex = 6;
             // 
             // button1
             // 
-            button1.Location = new Point(325, 285);
+            button1.Location = new Point(409, 282);
             button1.Name = "button1";
             button1.Size = new Size(150, 29);
             button1.TabIndex = 7;
@@ -115,7 +116,7 @@
             // 
             textBox1.Location = new Point(63, 331);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(217, 27);
+            textBox1.Size = new Size(312, 27);
             textBox1.TabIndex = 8;
             // 
             // textBox2
@@ -134,10 +135,20 @@
             label4.TabIndex = 10;
             label4.Text = "errorlog";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(7, 391);
+            label5.Name = "label5";
+            label5.Size = new Size(69, 20);
+            label5.TabIndex = 11;
+            label5.Text = "토탈가격";
+            // 
             // UserControl5
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
@@ -170,5 +181,6 @@
         private TextBox textBox1;
         private TextBox textBox2;
         private Label label4;
+        private Label label5;
     }
 }
