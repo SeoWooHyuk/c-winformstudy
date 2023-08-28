@@ -8,6 +8,7 @@ namespace 도리도리강좌
         ucPannel.UserControl4 uc4 = new ucPannel.UserControl4(); //상속및 접근제어 그림그리기
         ucPannel.UserControl5 uc5 = new ucPannel.UserControl5(); //캡슐화
         ucPannel.UserControl6 uc6 = new ucPannel.UserControl6(); //파일입출력
+        ucPannel.UserControl7 uc7 = new ucPannel.UserControl7(); //파일입출력
 
 
         public Form1()
@@ -55,11 +56,20 @@ namespace 도리도리강좌
             panel1.Controls.Add(uc6);
         }
 
+        private void button7_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(uc7);
+        }
+
         private void button10_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-      
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            uc7.usercloseeven();
+        }
     }
 }

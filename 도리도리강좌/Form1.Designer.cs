@@ -113,8 +113,9 @@
             button7.Name = "button7";
             button7.Size = new Size(181, 29);
             button7.TabIndex = 6;
-            button7.Text = "button7";
+            button7.Text = "타이머+암호복호";
             button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // button9
             // 
@@ -154,7 +155,7 @@
             button8.Name = "button8";
             button8.Size = new Size(181, 29);
             button8.TabIndex = 7;
-            button8.Text = "button8";
+            button8.Text = "-";
             button8.UseVisualStyleBackColor = true;
             // 
             // button1
@@ -204,6 +205,7 @@
             Controls.Add(tableLayoutPanel1);
             Name = "Form1";
             Text = "Form1";
+            FormClosing += Form1_FormClosing;
             Load += form_load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
