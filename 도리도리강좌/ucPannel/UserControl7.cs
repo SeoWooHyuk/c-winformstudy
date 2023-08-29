@@ -16,7 +16,7 @@ namespace 도리도리강좌.ucPannel
     {
        
         Dictionary<string, string> _dData = new Dictionary<string, string>();
-        string strpath = Application.StartupPath + "\\Save.xml";
+        string strpath = Application.StartupPath + "\\Save.txt"; //텍스트파일경로 
 
 
         private double itick = 0;
@@ -24,7 +24,7 @@ namespace 도리도리강좌.ucPannel
 
         private int i1add = 1;
         private int i1level = 1;
-
+         
         private int i3add = 0;
         private int i3level = 0;
 
@@ -40,7 +40,7 @@ namespace 도리도리강좌.ucPannel
 
         }
 
-        public void usercloseeven()
+        public void usercloseeven()  //폼이 종료될때 파일저장
         {
             XmlControl _xml = new XmlControl();
             _dData.Clear();
@@ -59,14 +59,7 @@ namespace 도리도리강좌.ucPannel
         private void UserControl7_Load(object sender, EventArgs e)
         {
 
-            CRijndeal cRijndeal = new CRijndeal();
-
-            string a = "안녕하세여 ASD QQWEFDFAWGAWGAWGAWGAWGAWGAWGAWGAWGF";
-            string test = cRijndeal.encrypted(a);
-            string test2 = cRijndeal.roundtrip(test);
-
-            Console.WriteLine(test);
-            Console.WriteLine(test2);
+          
 
             if (File.Exists(strpath)) //파일이있을경우 파일로딩
             {

@@ -19,9 +19,13 @@ namespace 도리도리강좌.ucPannel.classsusc7
         //xml읽어오는 함수 메서드
         public Dictionary<string, string> fxml_read(string strxmlpath)
         {
+            CRijndeal cRijndeal = new CRijndeal();
+            string strRijndealtext = File.ReadAllText(strxmlpath);
+            string roundtrip = cRijndeal.roundtrip(strRijndealtext); //복호화 처리
+
             Dictionary<string,string> dxmlconfig = new Dictionary<string,string>();
 
-            using (XmlReader rd = XmlReader.Create(strxmlpath))
+            using (XmlReader rd = XmlReader.Create(new StringReader(roundtrip)))  //StringReader 로 xml파일을 바로 읽어온다.
             {
                 while (rd.Read())
                 {
@@ -58,7 +62,10 @@ namespace 도리도리강좌.ucPannel.classsusc7
         public void fxml_write(string strxmlpath, Dictionary<string, string> dxmlconfig)
         {
 
-            using (XmlWriter wr = XmlWriter.Create(strxmlpath))
+            StringBuilder builder = new StringBuilder();
+
+            //using (XmlWriter wr = XmlWriter.Create(strxmlpath))
+            using (XmlWriter wr = XmlWriter.Create(builder))
             {
                 wr.WriteStartDocument();
 
@@ -76,6 +83,15 @@ namespace 도리도리강좌.ucPannel.classsusc7
                 wr.WriteEndDocument();
 
             }
+
+            CRijndeal cRijndeal = new CRijndeal();
+            string strencrypted = cRijndeal.encrypted(builder.ToString());
+            Console.WriteLine(strencrypted + "암호화");
+
+            File.WriteAllText(strxmlpath, strencrypted); //텍스트 파일을 지정한이름으로 생성해라
+
+
+
         }
 
     }
