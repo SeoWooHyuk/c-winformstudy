@@ -46,8 +46,9 @@ namespace 도리도리강좌.ucPannel
 
         }
 
-        public void coneSycleDraw() {
-  
+        public void coneSycleDraw()
+        {
+
             label1.Text = coneSycle.strName;
             Graphics g = panel1.CreateGraphics(); //판넬에다가 그래픽을 그리겠다
             Pen p = coneSycle.penInfo;
@@ -57,7 +58,7 @@ namespace 도리도리강좌.ucPannel
 
         public void SycleDraw()
         {
-         
+
             label1.Text = cCycle.strName;
             Graphics g = panel1.CreateGraphics();
             Pen p = cCycle.peninfo;
@@ -79,7 +80,7 @@ namespace 도리도리강좌.ucPannel
                 case "외발자전거":
                     coneSycle.fmove(20);
                     coneSycleDraw();
-                   break;
+                    break;
                 case "자전거":
                     cCycle.fmove(20);
                     SycleDraw();
@@ -89,7 +90,7 @@ namespace 도리도리강좌.ucPannel
                 default:
                     break;
             }
-        
+
         }
 
         private void button4_Click(object sender, EventArgs e) //왼쪽으로가라

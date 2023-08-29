@@ -47,7 +47,7 @@
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 20;
-            listBox1.Location = new Point(63, 41);
+            listBox1.Location = new Point(78, 41);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(312, 284);
             listBox1.TabIndex = 0;
@@ -55,7 +55,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(408, 46);
+            label1.Location = new Point(423, 46);
             label1.Name = "label1";
             label1.Size = new Size(39, 20);
             label1.TabIndex = 1;
@@ -64,7 +64,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(408, 69);
+            comboBox1.Location = new Point(423, 69);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(151, 28);
             comboBox1.TabIndex = 2;
@@ -72,7 +72,7 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(408, 146);
+            comboBox2.Location = new Point(423, 146);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(151, 28);
             comboBox2.TabIndex = 4;
@@ -80,7 +80,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(408, 123);
+            label2.Location = new Point(423, 123);
             label2.Name = "label2";
             label2.Size = new Size(77, 20);
             label2.TabIndex = 3;
@@ -89,7 +89,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(408, 206);
+            label3.Location = new Point(423, 206);
             label3.Name = "label3";
             label3.Size = new Size(39, 20);
             label3.TabIndex = 5;
@@ -97,14 +97,14 @@
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(409, 229);
+            numericUpDown1.Location = new Point(424, 229);
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(150, 27);
             numericUpDown1.TabIndex = 6;
             // 
             // button1
             // 
-            button1.Location = new Point(409, 282);
+            button1.Location = new Point(424, 282);
             button1.Name = "button1";
             button1.Size = new Size(150, 29);
             button1.TabIndex = 7;
@@ -114,14 +114,14 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(63, 331);
+            textBox1.Location = new Point(78, 331);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(312, 27);
             textBox1.TabIndex = 8;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(63, 384);
+            textBox2.Location = new Point(78, 365);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(412, 27);
             textBox2.TabIndex = 9;
@@ -129,7 +129,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(63, 361);
+            label4.Location = new Point(3, 368);
             label4.Name = "label4";
             label4.Size = new Size(63, 20);
             label4.TabIndex = 10;
@@ -138,7 +138,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(7, 391);
+            label5.Location = new Point(3, 334);
             label5.Name = "label5";
             label5.Size = new Size(69, 20);
             label5.TabIndex = 11;
@@ -161,7 +161,7 @@
             Controls.Add(label1);
             Controls.Add(listBox1);
             Name = "UserControl5";
-            Size = new Size(937, 428);
+            Size = new Size(937, 439);
             Load += UserControl5_Load;
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);

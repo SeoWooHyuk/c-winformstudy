@@ -54,18 +54,18 @@ namespace 도리도리강좌.ucPannel
 
         private void buttonResult_Click(object sender, EventArgs e)
         {
-           
-            string str =  textBoxname.Text + "와" + listBoxDay.SelectedItem.ToString() + " 요일 " + listBoxTime.SelectedItem.ToString() + "먹기로 했습니다" ;
-            tboxResult.Text = str;         
+
+            string str = textBoxname.Text + "와" + listBoxDay.SelectedItem.ToString() + " 요일 " + listBoxTime.SelectedItem.ToString() + "먹기로 했습니다";
+            tboxResult.Text = str;
         }
 
         private void buttonResult2_Click(object sender, EventArgs e)
         {
-            
-            string str = string.Format("{0} 와 {1} 요일 {2} 먹기로했습니다",textBoxname.Text , listBoxDay.SelectedItem.ToString(), listBoxTime.SelectedItem.ToString() );
+
+            string str = string.Format("{0} 와 {1} 요일 {2} 먹기로했습니다", textBoxname.Text, listBoxDay.SelectedItem.ToString(), listBoxTime.SelectedItem.ToString());
             tboxResult.Text += str;
         }
 
-       
+
     }
 }

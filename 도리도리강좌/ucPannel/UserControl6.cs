@@ -24,7 +24,7 @@ namespace 도리도리강좌.ucPannel
             InitializeComponent();
         }
 
-      
+
 
         //설정 가져오기 
         private void button3_Click(object sender, EventArgs e)
@@ -53,7 +53,7 @@ namespace 도리도리강좌.ucPannel
         }
 
         //텍스트파일읽어오기
-        private void button1_Click(object sender, EventArgs e) 
+        private void button1_Click(object sender, EventArgs e)
         {
             string strfilepath = string.Empty;
             openFileDialog1.InitialDirectory = Application.StartupPath;
@@ -168,6 +168,6 @@ namespace 도리도리강좌.ucPannel
             }
         }
 
-       
+
     }
 }

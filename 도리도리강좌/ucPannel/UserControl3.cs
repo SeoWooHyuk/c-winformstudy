@@ -45,10 +45,10 @@ namespace 도리도리강좌.ucPannel
             {
                 for (int j = 0; j < test.GetLength(1); j++)
                 {
-         
+
                     dataGridView1["Column" + (j + 1), i].Value = test[i, j];
-                } 
-             
+                }
+
             }
         }
     }

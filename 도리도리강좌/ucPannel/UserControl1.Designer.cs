@@ -178,7 +178,7 @@
             Controls.Add(shiftbox);
             Controls.Add(textBox1);
             Name = "UserControl1";
-            Size = new Size(938, 428);
+            Size = new Size(937, 439);
             ResumeLayout(false);
             PerformLayout();
         }

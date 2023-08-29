@@ -101,7 +101,7 @@
             Controls.Add(listBoxDay);
             Controls.Add(textBoxname);
             Name = "UserControl2";
-            Size = new Size(938, 428);
+            Size = new Size(937, 439);
             Load += UserControl2_Load;
             ResumeLayout(false);
             PerformLayout();

@@ -187,7 +187,7 @@
             Controls.Add(button1);
             Controls.Add(label1);
             Name = "UserControl7";
-            Size = new Size(937, 428);
+            Size = new Size(937, 439);
             Load += UserControl7_Load;
             ResumeLayout(false);
             PerformLayout();

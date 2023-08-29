@@ -8,12 +8,26 @@ namespace 도리도리강좌
         ucPannel.UserControl4 uc4 = new ucPannel.UserControl4(); //상속및 접근제어 그림그리기
         ucPannel.UserControl5 uc5 = new ucPannel.UserControl5(); //캡슐화
         ucPannel.UserControl6 uc6 = new ucPannel.UserControl6(); //파일입출력
-        ucPannel.UserControl7 uc7 = new ucPannel.UserControl7(); //파일입출력
+        ucPannel.UserControl7 uc7 = new ucPannel.UserControl7(); //타이머 암호화 복호화
+        ucPannel.UserControl8 uc8 = new ucPannel.UserControl8(); //자료구조큐스텍
+        ucPannel.UserControl9 uc9 = new ucPannel.UserControl9(); //자료구조리스트
+        ucPannel.UserControl10 uc10 = new ucPannel.UserControl10(); //자료구조데이터테이블 데이터 셋
+        ucPannel.UserControl11 uc11 = new ucPannel.UserControl11(); //딜리게이트
 
 
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            uc7.usercloseeven(); //7번 종료할때 파일저장
         }
 
         private void form_load(object sender, EventArgs e)
@@ -62,14 +76,28 @@ namespace 도리도리강좌
             panel1.Controls.Add(uc7);
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void button8_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(uc8);
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void button9_Click(object sender, EventArgs e)
         {
-            uc7.usercloseeven();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(uc9);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(uc10);
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(uc11);
         }
     }
 }

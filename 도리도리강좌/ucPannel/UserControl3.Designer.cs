@@ -151,7 +151,7 @@
             Controls.Add(dataGridView1);
             Controls.Add(label1);
             Name = "UserControl3";
-            Size = new Size(937, 428);
+            Size = new Size(937, 439);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

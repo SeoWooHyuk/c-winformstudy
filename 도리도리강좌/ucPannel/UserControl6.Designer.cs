@@ -319,7 +319,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "UserControl6";
-            Size = new Size(937, 428);
+            Size = new Size(937, 439);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();

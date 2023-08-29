@@ -14,7 +14,7 @@ namespace 도리도리강좌.ucPannel
 
     public partial class UserControl7 : UserControl
     {
-       
+
         Dictionary<string, string> _dData = new Dictionary<string, string>();
         string strpath = Application.StartupPath + "\\Save.txt"; //텍스트파일경로 
 
@@ -24,7 +24,7 @@ namespace 도리도리강좌.ucPannel
 
         private int i1add = 1;
         private int i1level = 1;
-         
+
         private int i3add = 0;
         private int i3level = 0;
 
@@ -35,7 +35,7 @@ namespace 도리도리강좌.ucPannel
         public UserControl7()
         {
             InitializeComponent();
-           
+
 
 
         }
@@ -49,24 +49,24 @@ namespace 도리도리강좌.ucPannel
             _dData.Add(XmlControl._LEVEL_1, i1level.ToString());
             _dData.Add(XmlControl._LEVEL_3, i3level.ToString());
             _dData.Add(XmlControl._LEVEL_50, i50level.ToString());
-            _xml.fxml_write(strpath , _dData);
+            _xml.fxml_write(strpath, _dData);
 
-       
+
         }
 
-        
+
 
         private void UserControl7_Load(object sender, EventArgs e)
         {
 
-          
+
 
             if (File.Exists(strpath)) //파일이있을경우 파일로딩
             {
                 XmlControl _xml = new XmlControl();
                 _dData = _xml.fxml_read(strpath);
 
-                itick =  double.Parse (_dData[XmlControl._TICK]);
+                itick = double.Parse(_dData[XmlControl._TICK]);
                 itotal = double.Parse(_dData[XmlControl._TOTAL]);
                 i1level = int.Parse(_dData[XmlControl._LEVEL_1]);
                 i3level = int.Parse(_dData[XmlControl._LEVEL_3]);
