@@ -28,17 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label1 = new Label();
             SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("맑은 고딕", 30F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(141, 126);
+            label1.Name = "label1";
+            label1.Size = new Size(615, 67);
+            label1.TabIndex = 0;
+            label1.Text = "딜리게이트 콘솔로 테스트";
             // 
             // UserControl11
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label1);
             Name = "UserControl11";
             Size = new Size(937, 439);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label label1;
     }
 }

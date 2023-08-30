@@ -176,10 +176,11 @@
             // 
             button12.Location = new Point(190, 75);
             button12.Name = "button12";
-            button12.Size = new Size(94, 29);
+            button12.Size = new Size(181, 30);
             button12.TabIndex = 15;
-            button12.Text = "button12";
+            button12.Text = "thread";
             button12.UseVisualStyleBackColor = true;
+            button12.Click += button12_Click;
             // 
             // button11
             // 

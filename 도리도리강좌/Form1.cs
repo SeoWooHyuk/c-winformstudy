@@ -13,11 +13,36 @@ namespace 도리도리강좌
         ucPannel.UserControl9 uc9 = new ucPannel.UserControl9(); //자료구조리스트
         ucPannel.UserControl10 uc10 = new ucPannel.UserControl10(); //자료구조데이터테이블 데이터 셋
         ucPannel.UserControl11 uc11 = new ucPannel.UserControl11(); //딜리게이트
+        ucPannel.UserControl12 uc12 = new ucPannel.UserControl12(); //딜리게이트
+
+
+        private int _locationx = 0;
+        private int _locationy = 0;
+
+
+        private static Form1 instance;
+
+        public int Locationx { get => _locationx; set => _locationx = value; }
+        public int Locationy { get => _locationy; set => _locationy = value; }
+
 
 
         public Form1()
         {
             InitializeComponent();
+        }
+
+        public static Form1 Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Form1();
+                }
+
+                return instance;
+            }
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -37,6 +62,7 @@ namespace 도리도리강좌
 
         private void button1_Click(object sender, EventArgs e)
         {
+    
             panel1.Controls.Clear();
             panel1.Controls.Add(uc1);
         }
@@ -99,5 +125,68 @@ namespace 도리도리강좌
             panel1.Controls.Clear();
             panel1.Controls.Add(uc11);
         }
+        
+        public void button12_Click(object sender, EventArgs e)
+        {
+         
+
+            Console.WriteLine(Locationx);
+            Console.WriteLine(Locationy);
+
+            location();
+            
+
+            panel1.Controls.Clear();
+            panel1.Controls.Add(uc12);
+
+        }
+
+
+        #region
+        public void location()
+        {
+            Locationx = this.Location.X;
+            Locationy = this.Location.Y;
+          
+            Form1.Instance.Locationx = Locationx;
+            Form1.Instance.Locationy = Locationy;
+            Console.WriteLine(Locationx);
+        }
+     
+        #endregion
+
     }
+
+
+    public class LocationManager
+    {
+        private static LocationManager instance;
+
+        private int _locationx = 0;
+        private int _locationy = 0;
+
+        public int Locationx { get => _locationx; set => _locationx = value; }
+        public int Locationy { get => _locationy; set => _locationy = value; }
+
+        // 생성자를 private로 선언하여 외부에서의 인스턴스 생성을 막습니다.
+        private LocationManager()
+        {
+            // 초기화 코드 작성
+        }
+
+        // 인스턴스에 접근하기 위한 정적 메서드를 제공합니다.
+        public static LocationManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new LocationManager();
+                }
+
+                return instance;
+            }
+        }
+    }
+
 }

@@ -30,11 +30,11 @@ namespace 도리도리강좌.ucPannel
         public UserControl11()
         {
             InitializeComponent();
-            declick2();
-            foreach (var item in list)
-            {
-                Console.WriteLine(item);
-            }
+            //declick2();
+            //foreach (var item in list)
+            //{
+            //    Console.WriteLine(item);
+            //}
         }
 
         public int fCallBackDelegate(int i, delFuncDow_Edge dFunction)
@@ -44,7 +44,7 @@ namespace 도리도리강좌.ucPannel
 
         public void declick1()
         {
-            int i = 2;  
+            int i = 2;
             delFuncDow_Edge delDow = new delFuncDow_Edge(fDow);  // public delegate int delFuncDow_Edge(int i);
             int a = fCallBackDelegate(i, delDow);
             Console.WriteLine(a);
@@ -74,7 +74,7 @@ namespace 도리도리강좌.ucPannel
             delFuncTopping delTopping = null; //public delegate int delFuncTopping(string strOrder, int Ea);
 
             delTopping += fTopping1;  //순서대로 읽어서 출력한다.
-            delTopping += fTopping2;
+            delTopping += fTopping2;  //순서대로 읽어서 출력한다
 
             delTopping("토핑", 1);
 
@@ -82,7 +82,7 @@ namespace 도리도리강좌.ucPannel
             flboxOrderRed(string.Format("전체 주문 가격은 {0}원 입니다.", _iTotalPrice));
         }
 
-        
+
 
 
         private int fTopping1(string Order, int iEa)
@@ -103,7 +103,7 @@ namespace 도리도리강좌.ucPannel
             return _iTotalPrice = _iTotalPrice + iPrice;
         }
 
-        
+
         private void flboxOrderRed(string strOrder)
         {
             list.Add(strOrder);
