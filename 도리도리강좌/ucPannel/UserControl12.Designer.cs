@@ -39,13 +39,12 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(listBox1);
             groupBox1.Controls.Add(btstart);
             groupBox1.Controls.Add(numberup);
             groupBox1.Controls.Add(label1);
             groupBox1.Location = new Point(33, 33);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(403, 216);
+            groupBox1.Size = new Size(403, 113);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Menu";
@@ -54,9 +53,9 @@
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 20;
-            listBox1.Location = new Point(18, 87);
+            listBox1.Location = new Point(466, 42);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(353, 104);
+            listBox1.Size = new Size(353, 324);
             listBox1.TabIndex = 3;
             // 
             // btstart
@@ -89,6 +88,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(listBox1);
             Controls.Add(groupBox1);
             Name = "UserControl12";
             Size = new Size(937, 439);

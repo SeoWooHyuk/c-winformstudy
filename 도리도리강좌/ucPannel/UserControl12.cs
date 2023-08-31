@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
@@ -27,32 +29,6 @@ namespace 도리도리강좌.ucPannel
 
 
 
-        Form player1;
-        Label playername;
-        Label playerpersent;
-        ProgressBar progressBar;
-        Button playerbutton;
-
-        //Thread _thread = null;
-
-
-        //public void threadstart()
-        //{
-        //   // _thread = new Thread(new ThreadStart(Run)); //쓰레드 스타트라는 델리게이트 함수를 타입 객체를 생성한후 함수를 델리게이트로 넘김
-
-        //    _thread = new Thread(Run); //컴파일러에서 델리게이트 객체를 추론하여 생성후 함수넘김
-
-        //    // _thread = new Thread(delegate () { Run(); }); //악명메서드를 사용하여 함수를 넘김
-        //    _thread.Start();
-
-        //}
-
-        //public void Run()
-        //{
-        //    test();
-        //}
-
-
         public UserControl12()
         {
             InitializeComponent();
@@ -61,20 +37,62 @@ namespace 도리도리강좌.ucPannel
 
         private void btstart_Click(object sender, EventArgs e)
         {
-
+            int locationX = Form1.Instance.Locationx + this.Size.Width + 15;
+            int locationY = Form1.Instance.Locationy;
 
             int number = (int)numberup.Value;
 
             for (int i = 0; i < number; i++)
             {
-                player1chekc(i, ((enumPlay)i).ToString());
-               
+                Player player = new Player(((enumPlay)i).ToString());
+                player.Location = new Point(locationX, locationY + player.Height * i);
+                player.eventdelMessage += Player_eventdelMessage;
+                player.threadStart();
+                player.Show();
             }
 
-            
+
         }
 
-        public void player1chekc(int i, string player)
+        private int Player_eventdelMessage(object sender, string strResult)
+        {
+            if (this.InvokeRequired) //요청한 쓰레드가 현재 메인쓰레드의 컨트롤러를 엑세슬할수있는지
+            {
+
+                this.Invoke(new Action(() => //그림을 그릴때만 메인스레드에 위임한다
+                {
+
+                    Player opplay = sender as Player;
+                    listBox1.Items.Add(string.Format("player {0} , text : {1}", opplay.StrplayerName, strResult));
+
+                }));
+
+            }
+
+
+            return 0;
+        }
+    }
+
+    class Player : Form
+    {
+        Label playername;
+        Label playerpersent;
+        ProgressBar progressBar;
+        Button playerbutton;
+
+        Thread thread = null;
+
+        public delegate int delMessage(object sender, string strResult);
+        public event delMessage eventdelMessage;
+
+        string _strplayerName = string.Empty;
+
+        public string StrplayerName { get => _strplayerName; set => _strplayerName = value; }
+
+        public Player() { }
+
+        public Player(string strplayerName)
         {
 
             playername = new Label();
@@ -82,89 +100,148 @@ namespace 도리도리강좌.ucPannel
             progressBar = new ProgressBar();
             playerbutton = new Button();
 
-            //if (player1 != null) //버튼을 누를때마다 폼을 지웠다 만든다
-            //{
-            //    player1.Dispose(); //폼을 없앤다
-            //    player1 = null;
-            //}
-            player1 = new Form();
-            player1.FormBorderStyle = FormBorderStyle.None;
-            player1.Width = 550;
-            player1.Height = 100;
-            player1.BackColor = Color.Aqua;
-            player1.StartPosition = FormStartPosition.Manual;
+
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.Width = 550;
+            this.Height = 100;
+            this.BackColor = Color.Aqua;
+            this.StartPosition = FormStartPosition.Manual;
             playername.AutoSize = true;
             playername.Top = 8;
             playername.Left = 5;
-            playername.Text = player;
+            playername.Text = StrplayerName = strplayerName;
             playername.TextAlign = ContentAlignment.MiddleCenter;
             //playername.BorderStyle = BorderStyle.FixedSingle;
-            playername.Parent = player1;
+            playername.Parent = this;
 
             playerbutton.AutoSize = true;
             playerbutton.Top = 5;
             playerbutton.Left = playername.Right + 10;
             playerbutton.Text = "포기";
-            playerbutton.Parent = player1;
+            playerbutton.Click += Playerbutton_Click;
+            playerbutton.Parent = this;
 
             playerpersent.AutoSize = true;
             playerpersent.Top = 8;
-            playerpersent.Left = player1.Right - playerpersent.Width - 80;
+            playerpersent.Left = this.Right - playerpersent.Width - 80;
             playerpersent.Text = "진행 상황 표시 : 0%";
             playerpersent.TextAlign = ContentAlignment.MiddleCenter;
-            playerpersent.Parent = player1;
+            playerpersent.Parent = this;
 
 
-            progressBar.Width = player1.Width - 30;
+            progressBar.Width = this.Width - 30;
             progressBar.Height = 50;
             progressBar.Left = 15;
             progressBar.Top = playerbutton.Bottom + 10;
-            progressBar.Parent = player1;
+            progressBar.Parent = this;
 
-            int locationX = Form1.Instance.Locationx + this.Size.Width + 15;
-            int locationY = Form1.Instance.Locationy;
-
-            Console.WriteLine(locationX + "X체크");
-            Console.WriteLine(locationY + "Y체크");
-            player1.Location = new Point(locationX, locationY + player1.Height * i);
-            player1.Show();
-
-            Thread thread = new Thread(() =>
-            {
-                Run();
-            });
-            thread.Start();
-
-            //test(); 단일스레드 사용 하나하고 넘기고 하나하고 넘기고
         }
 
-        public void Run()
+
+        private CancellationTokenSource cancellationTokenSource;
+        bool threadcheck = false;
+
+        public void Run(CancellationToken cancellationToken)
         {
-            CheckForIllegalCrossThreadCalls = false; 
-            int ivar = 0;
-            Random rd = new Random();
+            // CheckForIllegalCrossThreadCalls = false;  //크로스 쓰레드 예외 해제 왠만하면 쓰지말자 강제로 예외무시하는행동이라서
 
-            while (progressBar.Value < 100)
+            try
             {
-                ivar = rd.Next(1,11);
+                int ivar = 0;
+                Random rd = new Random();
 
-
-                if (progressBar.Value + ivar > 100)
+                while (progressBar.Value < 100)
                 {
-                    progressBar.Value = 100;
-                }
-                else
-                {
-                    progressBar.Value = progressBar.Value + ivar;
-                }
+                    cancellationToken.ThrowIfCancellationRequested(); // 요청 시 중단
 
-                playerpersent.Text = string.Format("진행 상황 표시 : {0}%", progressBar.Value);
-                player1.Refresh();
-                Thread.Sleep(300);
+                    if (this.InvokeRequired) //요청한 쓰레드가 현재 메인쓰레드의 컨트롤러를 엑세슬할수있는지
+                    {
 
+                        this.Invoke(new Action(() => //그림을 그릴때만 메인스레드에 위임한다
+                        {
+                            ivar = rd.Next(1, 11);
+
+                            if (progressBar.Value + ivar > 100)
+                            {
+                                progressBar.Value = 100;
+                            }
+                            else
+                            {
+                                progressBar.Value = progressBar.Value + ivar;
+                            }
+
+                            playerpersent.Text = string.Format("진행 상황 표시 : {0}%", progressBar.Value);
+                            this.Refresh();
+
+                        }));
+                        Thread.Sleep(300);
+                    }
+                    if (threadcheck)
+                    {
+                        eventdelMessage(this, string.Format("중도포기"));
+                    }
+                }
+               
+                  
+                   eventdelMessage(this, "완주!! complete");
+                
+
+            }
+            catch (OperationCanceledException ex) //CancellationToken에서 ThrowIfCancellationRequested() 호출 시 발생하는 예외 처리
+            {
+                ex.ToString();
+            }
+        }
+        
+
+        private void Playerbutton_Click(object? sender, EventArgs e)
+        {
+            // MessageBox.Show("확인");
+            threadAbort();
+            threadcheck = true;
+        }
+
+
+        public void threadStart() { //쓰레드 시작
+
+            cancellationTokenSource = new CancellationTokenSource();
+            CancellationToken cancellationToken = cancellationTokenSource.Token;
+
+            thread = new Thread(() => Run(cancellationToken));
+            thread.IsBackground = true; //자바에서 데몬설정과 같은 메인쓰레드를 끝내면 다같이중지
+            thread.Start();
+
+        }
+
+        public void threadAbort() //실행중인 쓰레드 강제종료  threadAbort는  net 5.0이상부터 지원안함
+        {
+            if (cancellationTokenSource != null && !cancellationTokenSource.IsCancellationRequested)
+            {
+                cancellationTokenSource.Cancel(); // 쓰레드 중단 요청 
             }
         }
 
-      
+        public void threadJoin()
+        {
+            if (thread.IsAlive) //쓰레드가동작중일때 쓰레드를 종료하겠다
+            {
+                bool threadEnd = thread.Join(3000);
+            }
+        
+        }
+
+        public void ThreadInterrupt()
+        {
+            if (thread.IsAlive)
+            {
+                thread.Interrupt();
+            }
+        }
+
+
+
+
     }
 }
+
+
