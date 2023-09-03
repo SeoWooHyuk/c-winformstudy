@@ -179,6 +179,7 @@
             dataGridView1.RowTemplate.Height = 29;
             dataGridView1.Size = new Size(664, 162);
             dataGridView1.TabIndex = 1;
+    
             // 
             // comboBox2
             // 

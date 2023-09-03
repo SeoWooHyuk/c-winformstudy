@@ -117,7 +117,7 @@ namespace 도리도리강좌.ucPannel
         private void button3_Click(object sender, EventArgs e)
         {
 
-            if(!string.IsNullOrEmpty(textBox1.Text)) //값이있으면
+            if (!string.IsNullOrEmpty(textBox1.Text)) //값이있으면
             {
                 foreach (DataRow item in ds.Tables[comboBox1.Text].Rows)
                 {
@@ -142,5 +142,7 @@ namespace 도리도리강좌.ucPannel
 
 
         }
+
+      
     }
 }

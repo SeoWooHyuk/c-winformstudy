@@ -149,7 +149,7 @@
             // 
             button15.Location = new Point(751, 75);
             button15.Name = "button15";
-            button15.Size = new Size(94, 29);
+            button15.Size = new Size(183, 30);
             button15.TabIndex = 18;
             button15.Text = "button15";
             button15.UseVisualStyleBackColor = true;
@@ -158,7 +158,7 @@
             // 
             button14.Location = new Point(564, 75);
             button14.Name = "button14";
-            button14.Size = new Size(94, 29);
+            button14.Size = new Size(181, 30);
             button14.TabIndex = 17;
             button14.Text = "button14";
             button14.UseVisualStyleBackColor = true;
@@ -167,10 +167,11 @@
             // 
             button13.Location = new Point(377, 75);
             button13.Name = "button13";
-            button13.Size = new Size(94, 29);
+            button13.Size = new Size(181, 30);
             button13.TabIndex = 16;
-            button13.Text = "button13";
+            button13.Text = "링큐";
             button13.UseVisualStyleBackColor = true;
+            button13.Click += button13_Click;
             // 
             // button12
             // 
